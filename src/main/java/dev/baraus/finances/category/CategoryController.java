@@ -1,35 +1,52 @@
 package dev.baraus.finances.category;
 
 import dev.baraus.finances.category.dto.CategoryInput;
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.baraus.finances.category.dto.CategoryOutput;
+import dev.baraus.finances.seedwork.PageQuery;
+import dev.baraus.finances.seedwork.Paginated;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("categories")
+@Tag(name = "Categories")
 public class CategoryController {
-    @Autowired
-    CategoryService categoryService;
+    final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping
-    public List<Category> getAll() {
-        return categoryService.getAll();
+    public ResponseEntity<Paginated<CategoryOutput>> getAll(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "date") String sort,
+            @RequestParam(defaultValue = "asc") String direction
+    ) {
+        final var query = new PageQuery(page, size, sort, direction);
+        final var res = categoryService.getAll(query);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @GetMapping("{id}")
-    public Category getById(Long id) {
-        return categoryService.getById(id);
+    public ResponseEntity<CategoryOutput> getById(Long id) {
+        final var res = categoryService.getById(id);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @PostMapping
-    public Category save(@RequestBody CategoryInput input) {
-        return categoryService.save(input);
+    public ResponseEntity<CategoryOutput> save(@RequestBody CategoryInput input) {
+        final var res = categoryService.save(input);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @PutMapping("{id}")
-    public Category update(@PathVariable Long id, @RequestBody CategoryInput category) {
-        return categoryService.update(id, category);
+    public ResponseEntity<CategoryOutput> update(@PathVariable Long id, @RequestBody CategoryInput category) {
+        final var res = categoryService.update(id, category);
+        return new ResponseEntity<>(res,  HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
