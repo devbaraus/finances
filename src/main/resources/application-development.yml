@@ -3,11 +3,11 @@ spring:
     name: finances
   datasource:
     url: jdbc:postgresql://localhost:5432/finances
-    username:
-    password:
+    username: postgres
+    password: 123456
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -15,4 +15,9 @@ spring:
 server:
   tomcat:
     accesslog:
-      enabled: false
+      enabled: true
+      directory: /dev
+      prefix: stdout
+      buffered: false
+      suffix:
+      file-date-format:
