@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:16-bullseye
+    container_name: finances-postgres
+    environment:
+      POSTGRES_DB: finances
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
