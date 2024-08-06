@@ -1,4 +1,17 @@
 services:
+  web:
+    image: devsbaraus/finances
+    build: .
+    container_name: finances
+    environment:
+      APP_ENV: production
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: finances
+      DB_USER: postgres
+      DB_PASS: 123456
+    ports:
+      - "8080:8080"
   db:
     image: postgres:16-bullseye
     container_name: finances-postgres
