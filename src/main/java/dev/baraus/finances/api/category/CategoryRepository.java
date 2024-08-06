@@ -1,4 +1,4 @@
-package dev.baraus.finances.category;
+package dev.baraus.finances.api.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

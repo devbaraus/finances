@@ -1,6 +1,6 @@
-package dev.baraus.finances.category.dto;
+package dev.baraus.finances.api.category.dto;
 
-import dev.baraus.finances.category.Category;
+import dev.baraus.finances.api.category.Category;
 
 import java.util.Date;
 

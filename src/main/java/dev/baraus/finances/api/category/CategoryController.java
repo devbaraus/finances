@@ -1,7 +1,7 @@
-package dev.baraus.finances.category;
+package dev.baraus.finances.api.category;
 
-import dev.baraus.finances.category.dto.CategoryInput;
-import dev.baraus.finances.category.dto.CategoryOutput;
+import dev.baraus.finances.api.category.dto.CategoryInput;
+import dev.baraus.finances.api.category.dto.CategoryOutput;
 import dev.baraus.finances.seedwork.PageQuery;
 import dev.baraus.finances.seedwork.Paginated;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,7 +23,7 @@ public class CategoryController {
     public ResponseEntity<Paginated<CategoryOutput>> getAll(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(defaultValue = "date") String sort,
+            @RequestParam(defaultValue = "id") String sort,
             @RequestParam(defaultValue = "asc") String direction
     ) {
         final var query = new PageQuery(page, size, sort, direction);

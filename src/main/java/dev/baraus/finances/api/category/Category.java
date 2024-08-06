@@ -1,16 +1,14 @@
-package dev.baraus.finances.category;
+package dev.baraus.finances.api.category;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import dev.baraus.finances.api.source.Source;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,6 +21,9 @@ public class Category {
     private String name;
 
     private String description;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Source> sources;
 
     @CreationTimestamp
     private Date createdAt;

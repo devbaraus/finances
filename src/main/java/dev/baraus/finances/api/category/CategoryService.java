@@ -1,7 +1,7 @@
-package dev.baraus.finances.category;
+package dev.baraus.finances.api.category;
 
-import dev.baraus.finances.category.dto.CategoryInput;
-import dev.baraus.finances.category.dto.CategoryOutput;
+import dev.baraus.finances.api.category.dto.CategoryInput;
+import dev.baraus.finances.api.category.dto.CategoryOutput;
 import dev.baraus.finances.seedwork.PageQuery;
 import dev.baraus.finances.seedwork.Paginated;
 import org.springframework.data.domain.PageRequest;
