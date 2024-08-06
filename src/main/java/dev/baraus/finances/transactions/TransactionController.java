@@ -41,7 +41,7 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<TransactionOutput> save(TransactionInput transaction) {
         final var res = transactionService.save(transaction);
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @PutMapping("{id}")
