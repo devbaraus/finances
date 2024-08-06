@@ -1,6 +1,7 @@
-package dev.baraus.finances.transactions;
+package dev.baraus.finances.api.transactions;
 
-import dev.baraus.finances.category.Category;
+import dev.baraus.finances.api.category.Category;
+import dev.baraus.finances.api.source.Source;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,16 @@ public class Transaction {
 
     private Double amount;
 
+    @Column(name = "type")
+    @Enumerated(EnumType.ORDINAL)
+    private TransactionType type;
+
+//    private Boolean isRecurrent;
+//
+//    private Integer recurrentTimes;
+//
+//    private Integer recurrentInterval;
+
     private Date date;
 
     @CreationTimestamp
@@ -28,6 +39,10 @@ public class Transaction {
 
     @UpdateTimestamp
     private Date updatedAt;
+
+    @OneToOne
+    @JoinColumn(name = "source_id", referencedColumnName = "id")
+    private Source source;
 
     @OneToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")

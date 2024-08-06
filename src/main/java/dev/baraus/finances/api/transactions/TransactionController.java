@@ -1,9 +1,9 @@
-package dev.baraus.finances.transactions;
+package dev.baraus.finances.api.transactions;
 
+import dev.baraus.finances.api.transactions.dto.TransactionOutput;
 import dev.baraus.finances.seedwork.PageQuery;
 import dev.baraus.finances.seedwork.Paginated;
-import dev.baraus.finances.transactions.dto.TransactionInput;
-import dev.baraus.finances.transactions.dto.TransactionOutput;
+import dev.baraus.finances.api.transactions.dto.TransactionInput;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class TransactionController {
     public ResponseEntity<Paginated<TransactionOutput>> getAll(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(defaultValue = "date") String sort,
+            @RequestParam(defaultValue = "id") String sort,
             @RequestParam(defaultValue = "asc") String direction
     ) {
         final var query = new PageQuery(page, size, sort, direction);
@@ -39,7 +39,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<TransactionOutput> save(TransactionInput transaction) {
+    public ResponseEntity<TransactionOutput> save(@RequestBody TransactionInput transaction) {
         final var res = transactionService.save(transaction);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }

@@ -1,4 +1,4 @@
-package dev.baraus.finances.transactions;
+package dev.baraus.finances.api.transactions;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

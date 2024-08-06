@@ -1,11 +1,11 @@
-package dev.baraus.finances.transactions;
+package dev.baraus.finances.api.transactions;
 
-import dev.baraus.finances.category.Category;
-import dev.baraus.finances.category.CategoryRepository;
+import dev.baraus.finances.api.category.Category;
+import dev.baraus.finances.api.category.CategoryRepository;
+import dev.baraus.finances.api.transactions.dto.TransactionOutput;
 import dev.baraus.finances.seedwork.PageQuery;
 import dev.baraus.finances.seedwork.Paginated;
-import dev.baraus.finances.transactions.dto.TransactionInput;
-import dev.baraus.finances.transactions.dto.TransactionOutput;
+import dev.baraus.finances.api.transactions.dto.TransactionInput;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

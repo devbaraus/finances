@@ -1,6 +1,5 @@
-package dev.baraus.finances.transactions.dto;
+package dev.baraus.finances.api.transactions.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.NonNull;
 import org.springframework.format.annotation.DateTimeFormat;
 

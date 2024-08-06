@@ -1,6 +1,6 @@
-package dev.baraus.finances.transactions.dto;
+package dev.baraus.finances.api.transactions.dto;
 
-import dev.baraus.finances.transactions.Transaction;
+import dev.baraus.finances.api.transactions.Transaction;
 
 import java.util.Date;
 
